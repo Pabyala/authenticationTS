@@ -1,7 +1,10 @@
 import { Router } from "express";
-import { signUp } from "../../controllers/auth-controller";
+import { refresh, signIn, signUp, verifyEmail } from "../../controllers/auth-controller";
 const router = Router();
 
-router.post("/", signUp);
+router.post("/signin", signIn);
+router.post("/signup", signUp);
+router.post("/verify-email", verifyEmail);
+router.get("/refresh-token", refresh);
 
 export default router;
