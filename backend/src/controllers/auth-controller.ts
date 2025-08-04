@@ -31,8 +31,6 @@ export const signUp = async (req: Request, res: Response) => {
         })
 
         await newUser.save();
-
-        // generateTokenAndSetCookie(res, newUser._id.toString());
         await sendVeriTokenEmail(email, verificationToken);
 
         res.status(201).send({ 
@@ -179,6 +177,7 @@ export const logOut = async (req: Request, res: Response) => {
         res.clearCookie('jwt', { httpOnly: true, sameSite: 'strict', secure: true });
         return res.status(200).json({ message: "Logout successfully"})
     } catch (error) {
-        
+        console.error(error);
+        res.status(500).send({ success: false, message: "Internal server error" });
     }
 }

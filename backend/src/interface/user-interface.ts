@@ -10,3 +10,9 @@ export interface IntUser extends Document {
     verificationExpiresAt?: Date;
     refreshToken?: string;
 }
+
+interface Request {
+    user?: {
+        id: string;
+    };
+}
