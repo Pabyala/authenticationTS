@@ -11,7 +11,7 @@ const UserSchema: Schema = new Schema<IntUser>({
     resetPasswordExpiresAt: { type: Date, default: undefined },
     verificationToken: { type: String, default: undefined },
     verificationExpiresAt: { type: Date, default: undefined },
-    refreshToken: { type: String }
+    refreshToken: { type: String, default: "" }
     },
     { timestamps: true }
 );
