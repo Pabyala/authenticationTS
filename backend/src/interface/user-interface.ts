@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface IntUser extends Document {
     name: string;
     email: string;
@@ -15,4 +17,13 @@ interface Request {
     user?: {
         id: string;
     };
+}
+
+export interface IntProduct extends Document {
+    name: string;
+    price: number;
+    description: string;
+    image?: string[];
+    currency?: string;
+    createdBy: Types.ObjectId;
 }
