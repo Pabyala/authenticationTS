@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 export interface IntUser extends Document {
     name: string;
@@ -25,5 +25,6 @@ export interface IntProduct extends Document {
     description: string;
     image?: string[];
     currency?: string;
-    createdBy: Types.ObjectId;
+    createdBy: mongoose.Types.ObjectId;
+    updatedBy: mongoose.Types.ObjectId;
 }

@@ -7,7 +7,9 @@ const ProductSchema: Schema = new Schema<IntProduct>({
     description: { type: String, required: true},
     image: { type: [String], default: [] },
     currency: { type: String, require: true, default: 'PHP', enum: ['PHP', 'USD', 'EUR', 'GBP', 'JPY', 'INR']},
-    createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    updatedBy: { type: Schema.Types.ObjectId, ref: 'User' }
+    // updatedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }]
     },
     { timestamps: true }
 );
