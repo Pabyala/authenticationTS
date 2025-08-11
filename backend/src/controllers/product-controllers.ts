@@ -139,3 +139,38 @@ export const deleteProduct = async (req: Request, res: Response) => {
         });
     }
 }
+
+export const getProductById = async (req: Request, res: Response) => {
+    const productId = req.params.productId;
+    try {
+        if(!productId) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Product ID is required.' 
+            });
+        }
+
+        const product = await Product.findById(productId)
+        .populate('createdBy', 'name email')
+        .populate('updatedBy', 'name email');
+
+        if (!product) {
+            return res.status(404).json({ 
+                success: false, 
+                message: 'Product not found.' 
+            });
+        }
+
+        res.status(200).json({ 
+            success: true, 
+            message: 'Product retrieved successfully.', 
+            data: product 
+        });
+    } catch (error) {
+        console.error("Error during sign-up:", error);
+        res.status(500).send({ 
+            success: false, 
+            message: "Internal server error" 
+        });
+    }
+}
