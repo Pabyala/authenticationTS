@@ -21,10 +21,8 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello, World!");  
 });
 
-app.use("/api/auth", authRoutes); 
-
-// app.use(verifyJWT);
-app.use("/api/product", productRoutes);
+app.use("/v1/auth", authRoutes); 
+app.use("/v1/products", productRoutes);
 
 app.listen(PORT, () => {
     dBConnect()
